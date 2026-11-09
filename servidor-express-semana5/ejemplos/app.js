@@ -29,6 +29,14 @@ app.put('/productos/:id', (req, res) => {
     res.send('Producto actualizado correctamente');
 });
 
+app.delete('/productos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    let data = JSON.parse(fs.readFileSync('./productos.json', 'utf-8'));
+    data = data.filter(producto => producto.id !== id);
+    fs.writeFileSync('./productos.json', JSON.stringify(data, null, 2));
+    res.send('Producto eliminado correctamente');
+});
+
 app.listen(3001, () => {
     console.log('Servidor escuchando en el puerto 3001 http://localhost:3001');
 });
