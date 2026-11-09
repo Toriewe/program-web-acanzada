@@ -1,0 +1,7 @@
+<label for="email">Ingresa el email:</label>
+<input type="email" id="email" [formControl]="emailControl">
+<button type="button" (click)="validar()">Validar</button>
+
+@if ( emailControl.invalid && emailControl.touched) {
+    <p class="error" style="color: rgb(124, 12, 12);">El email es inválido</p>
+}
